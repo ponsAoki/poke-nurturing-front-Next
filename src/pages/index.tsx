@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
-import { List } from "../components/pages/List";
-import { Header } from "../components/templates/layouts/headers/Header";
-// import "../styles/Home.module.css";
+import { ListPage } from "../components/pages/listPage";
+import { StandardPageLayout } from "../components/templates/layouts/standardPageLayout";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Header />
-
-      <List />
-    </>
+    <StandardPageLayout>
+      <ListPage />
+    </StandardPageLayout>
   );
 };
 
