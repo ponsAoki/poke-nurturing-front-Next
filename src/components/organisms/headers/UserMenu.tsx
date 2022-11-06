@@ -6,9 +6,15 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { FC } from "react";
+import { NavItem } from "./Header";
 
-export const UserMenu: FC = (): JSX.Element => {
+type Props = {
+  items: NavItem[];
+};
+
+export const UserMenu: FC<Props> = ({ items }): JSX.Element => {
   return (
     <Menu>
       <MenuButton
@@ -18,10 +24,11 @@ export const UserMenu: FC = (): JSX.Element => {
         variant="outline"
       />
       <MenuList>
-        <MenuItem>投稿一覧</MenuItem>
-        <MenuItem>あなたの投稿</MenuItem>
-        <MenuItem>育成論を投稿</MenuItem>
-        <MenuItem>流行を知る</MenuItem>
+        {items.map((item) => (
+          <Link key={item.label} href={item.href}>
+            <MenuItem>{item.label}</MenuItem>
+          </Link>
+        ))}
       </MenuList>
     </Menu>
   );
