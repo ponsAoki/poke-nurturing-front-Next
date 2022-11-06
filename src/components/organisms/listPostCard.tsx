@@ -44,15 +44,15 @@ export const ListPostCard: FC<Props> = ({ post }) => {
           <Image
             src={`${post.image}`}
             alt="ポケモンの画像です。"
-            w={{ base: "100px", md: "150px" }}
-            h={{ base: "100px", md: "150px" }}
+            w={{ base: "120px", md: "150px" }}
+            h={{ base: "120px", md: "150px" }}
           />
           <WrapItem alignItems="center">
             <VStack alignItems="start">
               {post.moves.map((move: string, i: number) => (
                 <Box
                   key="move"
-                  w="full"
+                  w={{ base: "140px", md: "200px" }}
                   borderWidth="1px"
                   borderRadius={4}
                   textAlign="center"
