@@ -19,7 +19,7 @@ export const DetailPostCard: FC<Props> = ({ post }): JSX.Element => {
   return (
     post && (
       <Box
-        w="100%"
+        w={{ base: "100%", md: "80%" }}
         paddingX={{ base: 4, md: 8 }}
         paddingY={{ base: 2, md: 4 }}
         borderWidth="1px"
@@ -42,15 +42,15 @@ export const DetailPostCard: FC<Props> = ({ post }): JSX.Element => {
             <Image
               src={`${post.image}`}
               alt="ポケモンの画像です。"
-              w={{ base: "100px", md: "150px" }}
-              h={{ base: "100px", md: "150px" }}
+              w={{ base: "120px", md: "150px" }}
+              h={{ base: "120px", md: "150px" }}
             />
             <WrapItem alignItems="center">
               <VStack alignItems="start">
                 {post.moves.map((move: string, i: number) => (
                   <Box
                     key="move"
-                    w="full"
+                    w="200px"
                     borderWidth="1px"
                     borderRadius={4}
                     textAlign="center"
@@ -109,7 +109,7 @@ export const DetailPostCard: FC<Props> = ({ post }): JSX.Element => {
         <br />
         <Divider></Divider>
         <br />
-        <MarkdownTemplate source={post.memo} />
+        <MarkdownTemplate source={post.memo as string} />
       </Box>
     )
   );
