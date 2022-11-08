@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useFetchPokemonData = () => {
+export const useFetchPokemonCollection = () => {
   const [pokeList, setPokeList] = useState([]);
 
   useEffect(() => {
