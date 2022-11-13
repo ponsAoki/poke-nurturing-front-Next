@@ -14,5 +14,6 @@ export const useFetchPokemonCollection = () => {
       setPokeList(apiRes.data);
     })();
   }, []);
+
   return pokeList;
 };

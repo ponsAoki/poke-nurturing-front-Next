@@ -14,7 +14,6 @@ export const useFetchMoveCollection = () => {
       setMoveList(apiRes.data);
     })();
   }, []);
-  console.log(moveList);
 
   return moveList;
 };

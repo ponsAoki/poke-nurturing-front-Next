@@ -15,5 +15,6 @@ export const useFetchCertainPostData = (postId: string | number) => {
       setPostData(apiRes.data);
     })();
   }, [postId]);
+
   return postData;
 };

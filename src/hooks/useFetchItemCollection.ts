@@ -14,7 +14,6 @@ export const useFetchItemCollection = () => {
       setItemList(apiRes.data);
     })();
   }, []);
-  console.log(itemList);
 
   return itemList;
 };
