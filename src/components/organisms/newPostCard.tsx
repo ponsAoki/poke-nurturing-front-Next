@@ -7,14 +7,14 @@ import {
   Stack,
   Switch,
 } from "@chakra-ui/react";
-import { AbilityAutoComplete } from "../molecules/inputs/abilityAutoComplete";
-import { ItemAutoComplete } from "../molecules/inputs/itemAutoComplete";
-import { MoveAutoComplete } from "../molecules/inputs/moveAutoComplete";
-import { NatureAutoComplete } from "../molecules/inputs/natureAutoComplete";
-import { PokeAutoComplete } from "../molecules/inputs/pokeAutoComplete";
+import { AbilityAutoComplete } from "../molecules/autoCompletes/abilityAutoComplete";
+import { ItemAutoComplete } from "../molecules/autoCompletes/itemAutoComplete";
+import { MoveAutoComplete } from "../molecules/autoCompletes/moveAutoComplete";
+import { NatureAutoComplete } from "../molecules/autoCompletes/natureAutoComplete";
+import { PokeAutoComplete } from "../molecules/autoCompletes/pokeAutoComplete";
 import { SexRadioStack } from "../molecules/radio/sexRadioStack";
 import { StatusTable } from "../molecules/tables/statusTable";
-import { Tiptap } from "../Tiptap";
+import { ArticleTextArea } from "../molecules/textAreas/articleTextArea";
 
 export const NewPostCard = (): JSX.Element => {
   return (
@@ -53,7 +53,7 @@ export const NewPostCard = (): JSX.Element => {
           <MoveAutoComplete moveNum={3} />
           <MoveAutoComplete moveNum={4} />
         </HStack>
-        <Tiptap />
+        <ArticleTextArea />
       </Stack>
     </Box>
   );
