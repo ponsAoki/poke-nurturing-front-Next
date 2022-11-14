@@ -2,7 +2,7 @@
 
 ## アプリ概要
 ポケモンの育成論をシェアできるWebアプリケーション.  
-リプレイス前のリリース済みのもの: https://poke-nurturing-theories-share-frontend.vercel.app/login
+リプレイス前のリリース済みのもの: https://poke-nurturing-theories-share-frontend.vercel.app/ (ユーザ名: test, パスワード: test でログインできます。)
 
 ## 製作背景
 まずは、自分を含む身の回りのポケモンプレイヤーの間で気軽に育成論を共有したい。   
