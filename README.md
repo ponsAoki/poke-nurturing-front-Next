@@ -1,3 +1,15 @@
+# ポケモン育成論共有アプリ フロントエンド
+
+## アプリ概要
+ポケモンの育成論をシェアできるWebアプリケーション
+
+## 製作背景
+ポケモン徹底攻略さんよりも、狭いコミュニティで気軽に育成論を共有したい。
+
+## 使用技術 (フロント)
+JavaScript, Vue.js, Vuetify
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
