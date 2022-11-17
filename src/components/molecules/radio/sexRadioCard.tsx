@@ -1,16 +1,20 @@
 import { Box, useRadio } from "@chakra-ui/react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-export const SexRadioCard = (props: any): JSX.Element => {
-  const { getInputProps, getCheckboxProps } = useRadio(props);
+type Props = {
+  register: UseFormRegister<FieldValues>;
+  children: any;
+};
+
+export const SexRadioCard = ({ register, children }: Props): JSX.Element => {
+  const { getInputProps, getCheckboxProps } = useRadio(children);
 
   const input = getInputProps();
   const checkbox = getCheckboxProps();
 
-  console.log(props.children);
-
   return (
     <Box as="label">
-      <input {...input} />
+      <input {...input} {...register("sex")} />
       <Box
         {...checkbox}
         cursor="pointer"
@@ -26,10 +30,10 @@ export const SexRadioCard = (props: any): JSX.Element => {
         }}
         px={5}
         py={3}
-        color={props.children.color}
+        color={children.color}
         bg={"gray.200"}
       >
-        {props.children.value}
+        {children.value}
       </Box>
     </Box>
   );

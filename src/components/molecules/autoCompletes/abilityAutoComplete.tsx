@@ -4,13 +4,22 @@ import {
   AutoCompleteItem,
   AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-export const AbilityAutoComplete = (): JSX.Element => {
+type Props = {
+  register: UseFormRegister<FieldValues>;
+};
+
+export const AbilityAutoComplete = ({ register }: Props): JSX.Element => {
   const abilities = ["どんかん", "マイペース"];
 
   return (
     <AutoComplete openOnFocus>
-      <AutoCompleteInput placeholder="特性" width={400} />
+      <AutoCompleteInput
+        placeholder="特性"
+        width={400}
+        {...register("ability")}
+      />
       <AutoCompleteList>
         {abilities &&
           abilities.map((ability: any) => (

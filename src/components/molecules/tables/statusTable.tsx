@@ -1,4 +1,5 @@
 import {
+  Input,
   Table,
   TableCaption,
   TableContainer,
@@ -41,7 +42,7 @@ export const StatusTable = () => {
             <Td>個体値</Td>
             {INDIVIDUAL_VALUE.map((iv) => (
               <Td key={iv} textAlign={"right"}>
-                {iv}
+                <Input value={iv} textAlign={"right"} width={16} />
               </Td>
             ))}
           </Tr>
@@ -49,7 +50,7 @@ export const StatusTable = () => {
             <Td>努力値</Td>
             {EFFORT_VALUE.map((ev) => (
               <Td key={ev} textAlign={"right"}>
-                {ev}
+                <Input value={ev} textAlign={"right"} width={16} />
               </Td>
             ))}
           </Tr>
@@ -57,7 +58,7 @@ export const StatusTable = () => {
             <Td>実数値</Td>
             {REAL_VALUE.map((rv) => (
               <Td key={rv} textAlign={"right"}>
-                {rv}
+                <Input value={rv} textAlign={"right"} width={16} />
               </Td>
             ))}
           </Tr>

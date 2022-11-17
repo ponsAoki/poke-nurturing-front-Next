@@ -1,8 +1,13 @@
 import { HStack, useRadioGroup } from "@chakra-ui/react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import { SEX } from "../../../constants/sex";
 import { SexRadioCard } from "./sexRadioCard";
 
-export const SexRadioStack = (): JSX.Element => {
+type Props = {
+  register: UseFormRegister<FieldValues>;
+};
+
+export const SexRadioStack = ({ register }: Props): JSX.Element => {
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "sex",
     defaultValue: { value: "なし", color: "white" } as any,
@@ -16,7 +21,7 @@ export const SexRadioStack = (): JSX.Element => {
       {SEX.map((sex) => {
         const radio = getRadioProps({ sex });
         return (
-          <SexRadioCard key={sex} {...radio}>
+          <SexRadioCard key={sex.value} {...radio} register={register}>
             {sex}
           </SexRadioCard>
         );
