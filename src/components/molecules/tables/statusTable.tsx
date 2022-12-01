@@ -1,4 +1,5 @@
 import {
+  Box,
   Input,
   Table,
   TableCaption,
@@ -9,11 +10,17 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { STATUS_VALUES } from "../../../constants/status-values";
+import { useRecoilValue } from "recoil";
+import { StatusValuesState } from "../../../globalStates/atoms/statusValuesState";
+import { realValuesSelector } from "../../../globalStates/atoms/statusValuesState/selectors/realValuesSelector";
+import { useStatusValues } from "../../../globalStates/atoms/statusValuesState/useStatusValues";
 
 export const StatusTable = () => {
-  const { BASE_STATS, INDIVIDUAL_VALUE, EFFORT_VALUE, REAL_VALUE } =
-    STATUS_VALUES;
+  const { baseStats, effortValues, individualValues } =
+    useRecoilValue(StatusValuesState);
+  const realValuesState = useRecoilValue(realValuesSelector);
+  const { changeIndividualValues, changeEffortValues } = useStatusValues();
+
   return (
     <TableContainer>
       <Table>
@@ -32,33 +39,53 @@ export const StatusTable = () => {
         <Tbody>
           <Tr>
             <Td>種族値</Td>
-            {BASE_STATS.map((bn) => (
-              <Td key={bn} textAlign={"right"}>
+            {baseStats.map((bn, i) => (
+              <Td key={i} textAlign={"right"}>
                 {bn}
               </Td>
             ))}
           </Tr>
           <Tr>
             <Td>個体値</Td>
-            {INDIVIDUAL_VALUE.map((iv) => (
-              <Td key={iv} textAlign={"right"}>
-                <Input value={iv} textAlign={"right"} width={16} />
+            {individualValues.map((iv, i) => (
+              <Td key={i} textAlign={"right"}>
+                <Input
+                  type={"number"}
+                  value={iv}
+                  placeholder={"31"}
+                  textAlign={"right"}
+                  width={16}
+                  onChange={(e) =>
+                    changeIndividualValues(Number(e.target.value), i)
+                  }
+                />
               </Td>
             ))}
           </Tr>
           <Tr>
             <Td>努力値</Td>
-            {EFFORT_VALUE.map((ev) => (
-              <Td key={ev} textAlign={"right"}>
-                <Input value={ev} textAlign={"right"} width={16} />
+            {effortValues.map((ev, i) => (
+              <Td key={i} textAlign={"right"}>
+                <Input
+                  type={"number"}
+                  value={ev}
+                  placeholder={"0"}
+                  textAlign={"right"}
+                  width={16}
+                  onChange={(e) =>
+                    changeEffortValues(Number(e.target.value), i)
+                  }
+                />
               </Td>
             ))}
           </Tr>
           <Tr>
             <Td>実数値</Td>
-            {REAL_VALUE.map((rv) => (
-              <Td key={rv} textAlign={"right"}>
-                <Input value={rv} textAlign={"right"} width={16} />
+            {realValuesState.map((rv, i) => (
+              <Td key={i} textAlign={"right"}>
+                <Box textAlign={"right"} width={16}>
+                  {rv}
+                </Box>
               </Td>
             ))}
           </Tr>

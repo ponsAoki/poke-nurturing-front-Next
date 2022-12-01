@@ -8,7 +8,10 @@ import {
   Stack,
   Switch,
 } from "@chakra-ui/react";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { useForm } from "react-hook-form";
+import { ErrorFallback } from "../errorBoundary";
 import { AbilityAutoComplete } from "../molecules/autoCompletes/abilityAutoComplete";
 import { ItemAutoComplete } from "../molecules/autoCompletes/itemAutoComplete";
 import { MoveAutoComplete } from "../molecules/autoCompletes/moveAutoComplete";
@@ -60,7 +63,11 @@ export const NewPostCard = (): JSX.Element => {
             <ItemAutoComplete register={register} />
           </HStack>
           <NatureAutoComplete register={register} />
-          <StatusTable />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Suspense>
+              <StatusTable />
+            </Suspense>
+          </ErrorBoundary>
           <HStack>
             <MoveAutoComplete moveNum={1} register={register} />
             <MoveAutoComplete moveNum={2} register={register} />
