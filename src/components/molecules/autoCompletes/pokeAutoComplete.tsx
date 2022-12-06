@@ -35,7 +35,7 @@ export const PokeAutoComplete = ({ register }: Props): JSX.Element => {
       <AutoCompleteList>
         {pokeData.map((poke: any) => (
           <AutoCompleteItem key={poke._id} value={poke.name + ` ${poke.form}`}>
-            {poke.name + ` ${poke.form}`}
+            {`${poke.name} ${poke.form}`}
           </AutoCompleteItem>
         ))}
       </AutoCompleteList>

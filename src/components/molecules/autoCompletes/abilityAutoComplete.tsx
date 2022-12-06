@@ -5,13 +5,18 @@ import {
   AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { PokemonState } from "../../../globalStates/atoms/pokemonState";
 
 type Props = {
   register: UseFormRegister<FieldValues>;
 };
 
 export const AbilityAutoComplete = ({ register }: Props): JSX.Element => {
-  const abilities = ["どんかん", "マイペース"];
+  const pokemonState = useRecoilValue(PokemonState);
+  const abilities = pokemonState.abilities
+    ? pokemonState.abilities.concat(pokemonState.hidden_abilities)
+    : [];
 
   return (
     <AutoComplete openOnFocus>
@@ -21,12 +26,11 @@ export const AbilityAutoComplete = ({ register }: Props): JSX.Element => {
         {...register("ability")}
       />
       <AutoCompleteList>
-        {abilities &&
-          abilities.map((ability: any) => (
-            <AutoCompleteItem key={ability} value={ability}>
-              {ability}
-            </AutoCompleteItem>
-          ))}
+        {abilities.map((ability: any) => (
+          <AutoCompleteItem key={ability} value={ability}>
+            {ability}
+          </AutoCompleteItem>
+        ))}
       </AutoCompleteList>
     </AutoComplete>
   );
