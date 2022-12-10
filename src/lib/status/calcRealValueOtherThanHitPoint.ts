@@ -4,9 +4,9 @@ export const calcRealValueOtherThanHitPoint = (
   statusValues: StatusValues,
   valIndex: number,
   level: number,
-  nature?: number[]
+  natureCorrectArr: number[]
 ): number => {
-  const natureCorrectVal = nature ? nature[valIndex] : 1;
+  const natureCorrectVal = natureCorrectArr[valIndex];
   const realValueOtherThanHitPoint = Math.floor(
     (Math.floor(
       ((statusValues.baseStats[valIndex] * 2 +

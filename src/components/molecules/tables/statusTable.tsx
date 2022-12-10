@@ -10,12 +10,17 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { StatusValuesState } from "../../../globalStates/atoms/statusValuesState";
 import { realValuesSelector } from "../../../globalStates/atoms/statusValuesState/selectors/realValuesSelector";
 import { useStatusValues } from "../../../globalStates/atoms/statusValuesState/useStatusValues";
 
-export const StatusTable = () => {
+type Props = {
+  register: UseFormRegister<FieldValues>;
+};
+
+export const StatusTable = ({ register }: Props) => {
   const { baseStats, effortValues, individualValues } =
     useRecoilValue(StatusValuesState);
   const realValuesState = useRecoilValue(realValuesSelector);
@@ -55,10 +60,29 @@ export const StatusTable = () => {
                   placeholder={"31"}
                   textAlign={"right"}
                   width={16}
+                  // max, min効かない
+                  // max={31}
+                  // min={0}
                   onChange={(e) =>
                     changeIndividualValues(Number(e.target.value), i)
                   }
                 />
+                {/* NumberInputだとなぜかうまくいかない */}
+                {/* <NumberInput
+                  // value={iv}
+                  placeholder={"31"}
+                  min={0}
+                  max={31}
+                  placeholder="iv"
+                  {...register("iv")}
+                  onChange={(val) => changeIndividualValues(Number(val), i)}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput> */}
               </Td>
             ))}
           </Tr>

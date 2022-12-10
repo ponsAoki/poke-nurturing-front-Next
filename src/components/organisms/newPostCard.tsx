@@ -17,6 +17,7 @@ import { ItemAutoComplete } from "../molecules/autoCompletes/itemAutoComplete";
 import { MoveAutoComplete } from "../molecules/autoCompletes/moveAutoComplete";
 import { NatureAutoComplete } from "../molecules/autoCompletes/natureAutoComplete";
 import { PokeAutoComplete } from "../molecules/autoCompletes/pokeAutoComplete";
+import { LevelInput } from "../molecules/input/levelInput";
 import { SexRadioStack } from "../molecules/radio/sexRadioStack";
 import { StatusTable } from "../molecules/tables/statusTable";
 import { ArticleTextArea } from "../molecules/textAreas/articleTextArea";
@@ -48,7 +49,7 @@ export const NewPostCard = (): JSX.Element => {
           />
           <HStack>
             <PokeAutoComplete register={register} />
-            <Input type={"number"} placeholder="Lv." {...register("lv")} />
+            <LevelInput register={register} />
           </HStack>
           <HStack justify={"space-between"}>
             <SexRadioStack register={register} />
@@ -65,7 +66,7 @@ export const NewPostCard = (): JSX.Element => {
           <NatureAutoComplete register={register} />
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <Suspense>
-              <StatusTable />
+              <StatusTable register={register} />
             </Suspense>
           </ErrorBoundary>
           <HStack>

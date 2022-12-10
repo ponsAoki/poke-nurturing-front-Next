@@ -4,6 +4,13 @@ import { StatusValuesState } from ".";
 export const useStatusValues = () => {
   const setStatusValues = useSetRecoilState(StatusValuesState);
 
+  const changeBaseStats = (pokemon: any): void => {
+    const newBaseStats = Object.entries(pokemon.status).map((elm) =>
+      Number(elm[1])
+    );
+    setStatusValues((prev) => ({ ...prev, baseStats: newBaseStats }));
+  };
+
   const changeIndividualValues = (val: number, index: number): void => {
     setStatusValues((prev) => ({
       ...prev,
@@ -22,5 +29,5 @@ export const useStatusValues = () => {
     }));
   };
 
-  return { changeIndividualValues, changeEffortValues };
+  return { changeBaseStats, changeIndividualValues, changeEffortValues };
 };
